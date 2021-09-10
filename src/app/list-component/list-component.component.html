@@ -1,0 +1,61 @@
+<form [formGroup]="fromGroupList" (ngSubmit)='onSubmit()'>
+<div>
+<div>
+    <label>street</label>
+    <input type="text" id="item-input" formControlName="street"> 
+</div>
+<div>
+    <label>APT</label>
+    <input type="checkbox" id="apt" formControlName="apt" value="Appart" >  
+
+    <label>Maison</label>
+    <input type="checkbox" id="house" formControlName="maison" value="Maison" [(ngModel)]="checkboxModel"> 
+</div>
+
+<div>
+    <label >Floor</label>
+    <select formControlName="floor" *ngIf="!checkboxModel" >
+        <option></option>
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select>  
+</div>
+ 
+
+<button type="submit" > Filtrer </button>
+</div>
+</form>
+
+
+<div class="container">
+    <table class="table table-borded">
+    <thead>
+        <tr>
+            <th> street</th>
+            <th> Area</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>floor</th>
+            <th>price vs Market</th>
+            <th>Nb pieces</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let element of listToShow">
+        <td>{{element.street}}</td>
+        <td>{{element.area}}</td>
+        <td>{{element.price}}</td>
+        <td>{{element.type}}</td>
+        <td>{{element.floor}}</td>
+        <td>{{element.priceMarket}}</td>
+        <td>{{element.nbPiece}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+</div>
